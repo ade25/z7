@@ -23,7 +23,8 @@ var
 *-ck.js
 .codeintel
 .sublime-project
-etc/*.conf
+etc/*
 etc/vhosts/*.conf
 src/ade25.*
 fabfile.py
+known-goog-versions.cfg

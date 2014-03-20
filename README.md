@@ -1,9 +1,4 @@
-<<<<<<< HEAD
-buildout.webserver
-=================
-=======
 # Webserver buildout
->>>>>>> c8cee83bd06a0bf279b5c7ea55c00bf2af3533dd
 
 Buildout installing the necessary tools to run a webserver on a specific domU.
 Just boostrap the buildout and run
@@ -11,22 +6,6 @@ Just boostrap the buildout and run
     python bootstrap.py -c deployment.cfg
     bin/buildout -c deployment.cfg
 
-
-<<<<<<< HEAD
-Note:
------
-
-In order to make this reusable it could also be an option to add a dedicated 
-buildout profile **servername.cfg** to be explicit and potentially be able to
-run this simple webserver setup on several machines (via different profiles).
-
-Another option would be to branch the buildout for each dedicated server and
-keep the master branch updated.
-
-
-Provided services:
-------------------
-=======
 ## Note:
 
 In order to make this work locally you need to take a view extra steps. Please
@@ -34,7 +13,6 @@ refer to the [setup local directory documentation](docs/setup.md)
 
 
 ## Provided services:
->>>>>>> c8cee83bd06a0bf279b5c7ea55c00bf2af3533dd
 
 * Nginx (Port 80)
 * Varnish (Port 8100)
@@ -43,19 +21,11 @@ refer to the [setup local directory documentation](docs/setup.md)
 * logrotation
 * supervisord (controlling the isntalled zope instances)
 
-<<<<<<< HEAD
-Configuration
-------------
-
-All configuration is based in variables. In order to extend the buildout for
-a new site, add or copy the relevant parts starting with "zopeX", by simply 
-=======
 
 ## Configuration
 
 All configuration is based in variables. In order to extend the buildout for
 a new site, add or copy the relevant parts starting with "zopeX", by simply
->>>>>>> c8cee83bd06a0bf279b5c7ea55c00bf2af3533dd
 appending a higher number, e.g for haproxy context switching:
 
     acl ${sites:zope1}_cluster hdr_beg(host) -i ${hosts:zope1}
@@ -64,33 +34,19 @@ appending a higher number, e.g for haproxy context switching:
 
 where you would simply copy the part and replace zope1 with zope2 accordingly.
 
-<<<<<<< HEAD
-Howto
-=====
-=======
 
 ## Howto
->>>>>>> c8cee83bd06a0bf279b5c7ea55c00bf2af3533dd
 
 In order to extend this buildout and add an additional site, follow these steps:
 
 
-<<<<<<< HEAD
-Update deployment.cfg
----------------------
-=======
 ### Update deployment.cfg
->>>>>>> c8cee83bd06a0bf279b5c7ea55c00bf2af3533dd
 
 1. Add a new variable/hostname pair to the *[hosts]* part, e.g.
 
 ```
 zope1   = example.tld
-<<<<<<< HEAD
-zope1-1  = example2.tld 
-=======
 zope1-1  = example2.tld
->>>>>>> c8cee83bd06a0bf279b5c7ea55c00bf2af3533dd
 ```
 
 Note that additional domains can be added, though you should stick to the
@@ -112,17 +68,6 @@ Note: if you add a new site you can just copy the last line and update
 the variable number
 
 
-<<<<<<< HEAD
-Add new virtual host to "${buildout:directory}/etc/vhosts/"
------------------------------------------------------------
-
-Copy the existing *example.tld* file and replace the *zopeX* variable with the 
-new variable, e.g. *zope1*.
-
-
-Update "/buildout.d/vhosts.cfg"
--------------------------------
-=======
 ### Add new virtual host to "${buildout:directory}/etc/vhosts/"
 
 Copy the existing *example.tld* file and replace the *zopeX* variable with the
@@ -130,7 +75,6 @@ new variable, e.g. *zope1*.
 
 
 ### Update "/buildout.d/vhosts.cfg"
->>>>>>> c8cee83bd06a0bf279b5c7ea55c00bf2af3533dd
 
 Add the new vhost configuration to the *vhost.cfg* file, by appending a new
 part, specifying the Zope instance location and add the corresponding
@@ -152,12 +96,7 @@ input = ${locations:templates}/${sites:zopeX}.conf
 output =
 ```
 
-<<<<<<< HEAD
-Update "/buildout.d/templates/haproxy.conf"
--------------------------------------------
-=======
 ### Update "/buildout.d/templates/haproxy.conf"
->>>>>>> c8cee83bd06a0bf279b5c7ea55c00bf2af3533dd
 
 Configure the load balancer to now inlcude the newly added site, by copying
 the relevant parts in the configuration
@@ -180,12 +119,8 @@ backend ${sites:zopeX}
     server ${sites:zopeX}  ${hosts:main}:${ports:zopeX} check rise 1 weight 50 maxconn 4
 ```
 
-<<<<<<< HEAD
-Update "/buildout.d/templates/nginx.conf"
------------------------------------------
-=======
+
 ### Update "/buildout.d/templates/nginx.conf"
->>>>>>> c8cee83bd06a0bf279b5c7ea55c00bf2af3533dd
 
 Finally include the new virtual host configuration in the main webserver
 congfig file by adding a single line at the bottom of the file
@@ -194,13 +129,6 @@ congfig file by adding a single line at the bottom of the file
 include ${locations:config}/${sites:zopeX}.conf;
 ````
 
-<<<<<<< HEAD
-
-Deploy the new configuration
-=============================
-
-In the last step login to the target deployment server and update the 
-=======
 ### Update /buildout.d/templates/serverdetails.json
 
 Add the new vhost to the server status info file we will use in "wigo.sqapp"
@@ -242,7 +170,6 @@ make sure that you separate serverblocks via `,`. The correct syntax
 ### Deploy the new configuration
 
 In the last step login to the target deployment server and update the
->>>>>>> c8cee83bd06a0bf279b5c7ea55c00bf2af3533dd
 configuration, example:
 
 ``` bash

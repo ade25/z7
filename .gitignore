@@ -25,6 +25,7 @@ var
 .sublime-project
 etc/*
 etc/vhosts/*.conf
+htdocs/*.json
 src/ade25.*
 fabfile.py
-known-goog-versions.cfg
+known-good-versions.cfg

@@ -26,11 +26,7 @@ acl purge {
 sub vcl_recv {
     set req.grace = 10m;
     set req.backend = balancer;
-<<<<<<< HEAD
-    
-=======
 
->>>>>>> c8cee83bd06a0bf279b5c7ea55c00bf2af3533dd
     if (req.request == "PURGE") {
         if (!client.ip ~ purge) {
                 error 405 "Not allowed.";
@@ -42,8 +38,6 @@ sub vcl_recv {
         # We only deal with GET and HEAD by default
         return(pass);
     }
-<<<<<<< HEAD
-=======
     if (req.http.host ~ "^(.*\.)?coraggio\.de$") {
         # We do not cache sites in development
         return(pass);
@@ -52,7 +46,6 @@ sub vcl_recv {
         # We do not cache sites in development
         return(pass);
     }
->>>>>>> c8cee83bd06a0bf279b5c7ea55c00bf2af3533dd
     call normalize_accept_encoding;
     call annotate_request;
     return(lookup);

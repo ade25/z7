@@ -68,7 +68,7 @@ Note: if you add a new site you can just copy the last line and update
 the variable number
 
 
-### Add new virtual host to "${buildout:directory}/etc/vhosts/"
+### Add new virtual host to "${buildout:directory}/vhosts/"
 
 Copy the existing *example.tld* file and replace the *zopeX* variable with the
 new variable, e.g. *zope1*.

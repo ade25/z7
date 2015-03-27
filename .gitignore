@@ -29,3 +29,4 @@ htdocs/*.json
 src/ade25.*
 fabfile.py
 known-good-versions.cfg
+.DS_Store

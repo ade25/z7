@@ -35,3 +35,4 @@ known-good-versions.cfg
 !cache_control_assets.conf
 !disable_logging.conf
 !proxy_settings.conf
+!bock_ips.conf
